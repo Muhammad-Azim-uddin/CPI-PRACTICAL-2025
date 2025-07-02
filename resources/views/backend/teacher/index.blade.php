@@ -2,7 +2,9 @@
 @section('title', 'Teacher')
 @section('backend')
 
-    <div class="container-fluid">
+
+           
+    <!-- <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Teacher Management</h1>
@@ -45,5 +47,10 @@
                 </form>
             </div>
         </div>
-    </div>
-@endsection
+    </div> -->
+
+
+    
+
+
+    @endsection

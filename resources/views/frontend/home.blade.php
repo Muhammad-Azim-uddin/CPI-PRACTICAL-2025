@@ -17,93 +17,66 @@
 
             }
 
-            /* From Uiverse.io by javierBarroso */
+            #explore {
+                text-decoration: none;
+                color: white;
+            }
+
             .cta {
-                position: relative;
-                margin: auto;
-                padding: 12px 18px;
-                transition: all 0.2s ease;
-                border: none;
-                background: none;
-                cursor: pointer;
-            }
-
-            .cta:before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 12px 24px;
+                background-color: #234567;
+                color: #fff;
                 border-radius: 50px;
-                background: #234567;
-                width: 45px;
-                height: 45px;
-                transition: all 0.3s ease;
-                display: block;
+                font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                text-decoration: none;
+                transition: background 0.3s ease, transform 0.2s ease;
+                position: relative;
                 overflow: hidden;
-                z-index: 1;
-            }
-
-            .cta::after {
-                content: "Explore Department";
-                position: absolute;
-                top: 0;
-                left: 0;
-                border-radius: 50px;
-                background: #fff;
-                width: 9px;
-                height: 21px;
-                transition: all 0.3s ease;
-                font-family: "Ubuntu", sans-serif;
-                font-size: 18px;
-                font-weight: 700;
-                letter-spacing: 0.05em;
-                white-space: nowrap;
-                padding: 12px 18px;
-                z-index: 2;
-                color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
-                text-align: left;
-            }
-
-            .cta span {
-                position: relative;
-                font-family: "Ubuntu", sans-serif;
-                font-size: 18px;
-                font-weight: 700;
-                letter-spacing: 0.05em;
-                color: #234567;
             }
 
             .cta svg {
-                position: relative;
-                top: 0;
-                margin-left: 10px;
+                stroke: #fff;
+                stroke-width: 2;
                 fill: none;
                 stroke-linecap: round;
                 stroke-linejoin: round;
-                stroke: #234567;
-                stroke-width: 2;
                 transform: translateX(-5px);
-                transition: all 0.3s ease;
-                z-index: 2;
-            }
-
-            .cta:hover:before {
-                width: 100%;
-            }
-
-            .cta:hover::after {
-                width: 100%;
+                transition: transform 0.3s ease;
             }
 
             .cta:hover svg {
                 transform: translateX(0);
-                stroke: #fff;
             }
 
             .cta:active {
                 transform: scale(0.95);
+            }
+
+
+            #team-item {
+                height: 350px !important;
+                width: 100% !important;
+            }
+
+            @media (max-width: 768px) {
+                #team-item {
+                    height: 350px !important;
+                    width: auto !important;
+                }
+            }
+
+            @media (max-width:512px) {
+                #team-item {
+                    height: 300px !important;
+                    width: auto !important;
+                }
+
             }
         </style>
     @endpush
@@ -113,14 +86,15 @@
         style="margin-bottom: 90px;background: linear-gradient(rgba(60, 128, 224, 0.7), rgba(76, 127, 197, 0.77)), url({{ asset('frontend/assets/img/cpi.jpg') }}), no-repeat center center;">
         <div class="container text-center my-5 py-5">
             <h1 class="text-white display-1 mb-5">Welcome To Chittagong Polytechnic Institute</h1>
-            <button class="btn btn-secondary px-4 px-lg-5">Explore Departments</button>
-            <button class="cta">
+            <!-- <button class="btn btn-secondary px-4 px-lg-5">Explore Departments</button> -->
+            <a id="explore" href="{{ route('department') }}" class="cta">
                 <span>Explore Department</span>
                 <svg width="15px" height="10px" viewBox="0 0 13 10">
                     <path d="M1,5 L11,5"></path>
                     <polyline points="8 1 12 5 8 9"></polyline>
                 </svg>
-            </button>
+            </a>
+
 
         </div>
     </div>
@@ -133,8 +107,8 @@
                 <div class="col-lg-5 mb-5  mb-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100 ">
                         <img class="position-absolute w-100 h-100"
-                            src="{{ asset('storage/' . $about->image) ?? asset('frontend/assets/img/cpi.jpg') }} "
-                            style="object-fit: cover;">
+                            src="{{ asset('frontend/assets/img/courses-1.jpg') }} "
+                            style="object-fit: cover; opacity: 0.6;">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -143,15 +117,15 @@
                         <h1 class="display-4">{{ $about->name ?? "Chattogram Polytechnic Institute" }}</h1>
                     </div>
                     <p>{!!  $about->long_description ?? "Chittagong Polytechnic Institute is located on 35 acres of land in Nasirabad, Chittagong. It has
-                                    categorized laboratories such as a Basic Electronics Lab, Advanced Electronics Lab, Computer Lab,
-                                    Chemistry Lab, and Physics Lab. There are also workshops for practical learning, including a Metal
-                                    Shop, Wood Shop, Power Shop, and Basic Workshop. Chittagong Polytechnic Institute has a Rover Scout
-                                    team as well.
+                                                                        categorized laboratories such as a Basic Electronics Lab, Advanced Electronics Lab, Computer Lab,
+                                                                        Chemistry Lab, and Physics Lab. There are also workshops for practical learning, including a Metal
+                                                                        Shop, Wood Shop, Power Shop, and Basic Workshop. Chittagong Polytechnic Institute has a Rover Scout
+                                                                        team as well.
 
-                                    Every year, many students get admitted to CPI, and many graduate as diploma engineers. Each
-                                    department at CPI is divided into eight semesters. In each semester, a student achieves a CGPA of 4
-                                    or less. The final semester is the Industrial Training Semester. During this semester, a student
-                                    gains practical knowledge about a selected technology in an industry for about six months." !!}
+                                                                        Every year, many students get admitted to CPI, and many graduate as diploma engineers. Each
+                                                                        department at CPI is divided into eight semesters. In each semester, a student achieves a CGPA of 4
+                                                                        or less. The final semester is the Industrial Training Semester. During this semester, a student
+                                                                        gains practical knowledge about a selected technology in an industry for about six months." !!}
                     </p>
                     <div class="row pt-3 mx-0">
                         <div class="col-3 px-0">
@@ -236,8 +210,8 @@
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="{{ asset('frontend/assets/img/best.jpg') }}"
-                            style="object-fit: cover;">
+                        <img class="position-absolute img-fluid w-100 h-100"
+                            src="{{ asset('frontend/assets/img/why best.webp') }}" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -280,19 +254,21 @@
     <!-- Courses End -->
 
 
-    <!-- Team Start -->
+    <!-- instructor section Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="section-title text-center position-relative mb-5">
                 <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Instructors</h6>
                 <h1 class="display-4">Meet Our Instructors</h1>
             </div>
-            <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
+            <div class="owl-carousel team-carousel position-relative text-center" style="padding: 0 30px;">
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
+                    <img id="team-item" class="img-fluid " src="{{ asset('frontend/assets/img/instructor/cheif ins.jpeg')}}"
+                        alt="">
+                    <div id="item-div" class="bg-light text-center p-4">
+                        <h5 class="mb-3">Mohammad Mehedi Hasan</h5>
+                        <p class="mb-2">Chief Instructor of </p>
+                        <p class="mb-2">Computer Science & Technology</p>
                         <div class="d-flex justify-content-center">
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-twitter"></i></a>
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-facebook-f"></i></a>
@@ -303,10 +279,12 @@
                     </div>
                 </div>
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
+                    <img id="team-item" class="img-fluid " src="{{ asset('frontend/assets/img/instructor/civil.jpg')}}"
+                        alt="">
+                    <div id="item-div" class="bg-light text-center p-4">
+                        <h5 class="mb-3">Shafiul Azam</h5>
+                        <p class="mb-2">Instructor of </p>
+                        <p class="mb-2">Civil Technology</p>
                         <div class="d-flex justify-content-center">
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-twitter"></i></a>
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-facebook-f"></i></a>
@@ -317,10 +295,12 @@
                     </div>
                 </div>
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
+                    <img id="team-item" class="img-fluid "
+                        src="{{ asset('frontend/assets/img/instructor/electrical ci.jpg')}}" a lt="">
+                    <div id="item-div" class="bg-light text-center p-4">
+                        <h5 class="mb-3">Engr Shuvro Das</h5>
+                        <p class="mb-2">Chief Instructor of </p>
+                        <p class="mb-2">Electrical Technology</p>
                         <div class="d-flex justify-content-center">
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-twitter"></i></a>
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-facebook-f"></i></a>
@@ -331,10 +311,44 @@
                     </div>
                 </div>
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-4.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
+                    <img id="team-item" class="img-fluid "
+                        src="{{ asset('frontend/assets/img/instructor/mechanical ci.jpeg')}}" alt="">
+                    <div id="item-div" class="bg-light text-center p-4">
+                        <h5 class="mb-3">MD Omar Faruk</h5>
+                        <p class="mb-2">Chief Instructor of </p>
+                        <p class="mb-2">Mechanical Technology</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img id="team-item" class="img-fluid " src="{{ asset('frontend/assets/img/instructor/power.png')}}"
+                        alt="">
+                    <div id="item-div" class="bg-light text-center p-4">
+                        <h5 class="mb-3">Tarun Kumar Nath</h5>
+                        <p class="mb-2">Chief Instructor of </p>
+                        <p class="mb-2">Power Technology</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="index.html#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img id="team-item" class="img-fluid " src="{{ asset('frontend/assets/img/instructor/env.jpg')}}"
+                        alt="">
+                    <div id="item-div" class="bg-light text-center p-4">
+                        <h5 class="mb-3">Selim Uddin</h5>
+                        <p class="mb-2">Chief Instructor of </p>
+                        <p class="mb-2">Environmnet Technology</p>
                         <div class="d-flex justify-content-center">
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-twitter"></i></a>
                             <a class="mx-1 p-1" href="index.html#"><i class="fab fa-facebook-f"></i></a>
@@ -347,7 +361,7 @@
             </div>
         </div>
     </div>
-    <!-- Team End -->
+    <!-- instruction section End -->
 
 
     <!-- Testimonial Start -->
@@ -359,35 +373,50 @@
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Testimonial</h6>
                         <h1 class="display-4">What Say Our Students</h1>
                     </div>
-                    <p class="m-0">Dolor est dolores et nonumy sit labore dolores est sed rebum amet, justo duo ipsum
-                        sanctus dolore magna rebum sit et. Diam lorem ea sea at. Nonumy et at at sed justo est nonumy
-                        tempor. Vero sea ea eirmod, elitr ea amet diam ipsum at amet. Erat sed stet eos ipsum diam</p>
+                    <p class="m-0">Students of Chattogram Polytechnic Institute appreciate its calm campus, practical labs,
+                        and supportive teachers. The six-month industrial training helps them gain real job experience. Many
+                        receive government scholarships, which reduce financial stress. CPI also offers extracurriculars
+                        like Rover Scouts that build leadership skills. Overall, students feel proud and well-prepared for
+                        future careers.</p>
                 </div>
                 <div class="col-lg-7">
                     <div class="owl-carousel testimonial-carousel">
                         <div class="bg-white p-5">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est
-                                ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed
-                                stet amet elitr duo lorem</p>
+                            <p>“The labs and workshops are well-equipped.
+                                I’ve learned a lot through hands-on practice.”</p>
                             <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                <img class="img-fluid mr-4" src="img/testimonial-2.jpg" alt="">
+                                <img class="img-fluid mr-4" src="{{ asset('frontend/assets/img/student/masud.jpg') }}"
+                                    alt="">
                                 <div>
-                                    <h5>Student Name</h5>
-                                    <span>Web Design</span>
+                                    <h5>Saiful Alam Masud </h5>
+                                    <span>Web Developer</span>
                                 </div>
                             </div>
                         </div>
                         <div class="bg-white p-5">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est
-                                ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed
-                                stet amet elitr duo lorem</p>
+                            <p>“Our teachers are friendly and supportive.
+                                They always guide us like mentors.”</p>
                             <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                <img class="img-fluid mr-4" src="img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid mr-4" src="{{ asset('frontend/assets/img/student/mahfuz.jpg') }}"
+                                    alt="">
                                 <div>
-                                    <h5>Student Name</h5>
-                                    <span>Web Design</span>
+                                    <h5>Mahfuz Uddin</h5>
+                                    <span>White Hat Hacker</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p>“The environment here is friendly and welcoming.
+                                It feels like a second home.”</p>
+                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
+                                <img class="img-fluid mr-4" src="{{ asset('frontend/assets/img/student/student3.webp') }}"
+                                    alt="">
+                                <div>
+                                    <h5>Angel Sadia</h5>
+                                    <span>Dramatist</span>
                                 </div>
                             </div>
                         </div>

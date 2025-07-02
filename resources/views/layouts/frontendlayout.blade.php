@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <title>CPI - Chattogram Polytechnic Institute</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
     <link href="{{ asset('frontend/assets/img/logo.png') }}" rel="icon">
@@ -23,10 +21,15 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('frontend/assets/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet">
     @stack('css')
+    <style>
+        .navbar-toggler:focus{
+            box-shadow: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,7 +74,7 @@
                         alt="logo">
                     <h1 class="d-lg-none d-block">CPI</h1>
                 </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
@@ -200,8 +203,8 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('frontend/assets/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/lib/easing/easing.min.js')}}"></script>
     <script src="{{ asset('frontend/assets/lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{ asset('frontend/assets/lib/counterup/counterup.min.js')}}"></script>
