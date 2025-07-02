@@ -35,7 +35,7 @@
                 <div class="col-lg-5 mb-5  mb-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100 ">
                         <img class="position-absolute w-100 h-100"
-                            src="{{ asset('storage/' . $about->image) ?? asset('frontend/assets/img/cpi.jpg') }} "
+                            src="{{ asset('storage/' . $about?->image) ?? asset('frontend/assets/img/cpi.jpg') }} "
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -191,7 +191,7 @@
             </div>
             <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('frontend/assets/img/team-1.jpg')}}" alt="">
                     <div class="bg-light text-center p-4">
                         <h5 class="mb-3">Instructor Name</h5>
                         <p class="mb-2">Web Design & Development</p>
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('frontend/assets/img/team-2.jpg')}}" alt="">
                     <div class="bg-light text-center p-4">
                         <h5 class="mb-3">Instructor Name</h5>
                         <p class="mb-2">Web Design & Development</p>
@@ -219,7 +219,7 @@
                     </div>
                 </div>
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('frontend/assets/img/team-3.jpg')}}" alt="">
                     <div class="bg-light text-center p-4">
                         <h5 class="mb-3">Instructor Name</h5>
                         <p class="mb-2">Web Design & Development</p>
@@ -233,7 +233,7 @@
                     </div>
                 </div>
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-4.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('frontend/assets/img/team-4.jpg')}}" alt="">
                     <div class="bg-light text-center p-4">
                         <h5 class="mb-3">Instructor Name</h5>
                         <p class="mb-2">Web Design & Development</p>
