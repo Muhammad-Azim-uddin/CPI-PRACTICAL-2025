@@ -1,22 +1,112 @@
 @extends('layouts.frontendlayout')
 @section('content')
-@push('css')
+    @push('css')
 
 
-<style>
-     #department{
-        height: 530px !important;
-        width: auto;
-     }
-     @media  (max-width: 768px) {
-        #department{
-            height: 400px !important;
-            width: auto;
-        }
-        
-     }
-</style>
-@endpush
+        <style>
+            #department {
+                height: 530px !important;
+                width: auto;
+            }
+
+            @media (max-width: 768px) {
+                #department {
+                    height: 400px !important;
+                    width: auto;
+                }
+
+            }
+
+            /* From Uiverse.io by javierBarroso */
+            .cta {
+                position: relative;
+                margin: auto;
+                padding: 12px 18px;
+                transition: all 0.2s ease;
+                border: none;
+                background: none;
+                cursor: pointer;
+            }
+
+            .cta:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 50px;
+                background: #234567;
+                width: 45px;
+                height: 45px;
+                transition: all 0.3s ease;
+                display: block;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            .cta::after {
+                content: "Explore Department";
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 50px;
+                background: #fff;
+                width: 9px;
+                height: 21px;
+                transition: all 0.3s ease;
+                font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+                padding: 12px 18px;
+                z-index: 2;
+                color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+                text-align: left;
+            }
+
+            .cta span {
+                position: relative;
+                font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                color: #234567;
+            }
+
+            .cta svg {
+                position: relative;
+                top: 0;
+                margin-left: 10px;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke: #234567;
+                stroke-width: 2;
+                transform: translateX(-5px);
+                transition: all 0.3s ease;
+                z-index: 2;
+            }
+
+            .cta:hover:before {
+                width: 100%;
+            }
+
+            .cta:hover::after {
+                width: 100%;
+            }
+
+            .cta:hover svg {
+                transform: translateX(0);
+                stroke: #fff;
+            }
+
+            .cta:active {
+                transform: scale(0.95);
+            }
+        </style>
+    @endpush
 
     <!-- Hero Banner Start -->
     <div class="jumbotron jumbotron-fluid position-relative overlay-bottom "
@@ -24,6 +114,14 @@
         <div class="container text-center my-5 py-5">
             <h1 class="text-white display-1 mb-5">Welcome To Chittagong Polytechnic Institute</h1>
             <button class="btn btn-secondary px-4 px-lg-5">Explore Departments</button>
+            <button class="cta">
+                <span>Explore Department</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+
         </div>
     </div>
     <!-- Hero Banner End -->
@@ -45,15 +143,15 @@
                         <h1 class="display-4">{{ $about->name ?? "Chattogram Polytechnic Institute" }}</h1>
                     </div>
                     <p>{!!  $about->long_description ?? "Chittagong Polytechnic Institute is located on 35 acres of land in Nasirabad, Chittagong. It has
-                            categorized laboratories such as a Basic Electronics Lab, Advanced Electronics Lab, Computer Lab,
-                            Chemistry Lab, and Physics Lab. There are also workshops for practical learning, including a Metal
-                            Shop, Wood Shop, Power Shop, and Basic Workshop. Chittagong Polytechnic Institute has a Rover Scout
-                            team as well.
+                                    categorized laboratories such as a Basic Electronics Lab, Advanced Electronics Lab, Computer Lab,
+                                    Chemistry Lab, and Physics Lab. There are also workshops for practical learning, including a Metal
+                                    Shop, Wood Shop, Power Shop, and Basic Workshop. Chittagong Polytechnic Institute has a Rover Scout
+                                    team as well.
 
-                            Every year, many students get admitted to CPI, and many graduate as diploma engineers. Each
-                            department at CPI is divided into eight semesters. In each semester, a student achieves a CGPA of 4
-                            or less. The final semester is the Industrial Training Semester. During this semester, a student
-                            gains practical knowledge about a selected technology in an industry for about six months." !!}
+                                    Every year, many students get admitted to CPI, and many graduate as diploma engineers. Each
+                                    department at CPI is divided into eight semesters. In each semester, a student achieves a CGPA of 4
+                                    or less. The final semester is the Industrial Training Semester. During this semester, a student
+                                    gains practical knowledge about a selected technology in an industry for about six months." !!}
                     </p>
                     <div class="row pt-3 mx-0">
                         <div class="col-3 px-0">
@@ -151,33 +249,33 @@
     <!-- department Start -->
     @if(!empty($departments) && count($departments) > 0)
         <div class="container-fluid px-0 py-5">
-        <div class="row mx-0 justify-content-center pt-5">
-            <div class="col-lg-6">
-                <div class="section-title text-center position-relative mb-4">
-                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Department</h6>
-                    <h1 class="display-4">Checkout Departments</h1>
+            <div class="row mx-0 justify-content-center pt-5">
+                <div class="col-lg-6">
+                    <div class="section-title text-center position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Department</h6>
+                        <h1 class="display-4">Checkout Departments</h1>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="owl-carousel  courses-carousel" id="department">
-            @foreach ($departments as $department)
-            <div class="courses-item position-relative">
-                <img class="img-fluid" id="department"  id="img" src="{{ asset($department->image) }}" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">{{ $department->name }}</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>{{ $department->head }}</span>
+            <div class="owl-carousel  courses-carousel" id="department">
+                @foreach ($departments as $department)
+                    <div class="courses-item position-relative">
+                        <img class="img-fluid" id="department" id="img" src="{{ asset($department->image) }}" alt="">
+                        <div class="courses-text">
+                            <h4 class="text-center text-white px-3">{{ $department->name }}</h4>
+                            <div class="border-top w-100 mt-3">
+                                <div class="d-flex justify-content-between p-4">
+                                    <span class="text-white"><i class="fa fa-user mr-2"></i>{{ $department->head }}</span>
+                                </div>
+                            </div>
+                            <div class="w-100 bg-white text-center p-4">
+                                <a class="btn btn-primary" href="{{ route('department') }}">Departments details</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="{{ route('department') }}">Departments details</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
-    </div>
     @endif
     <!-- Courses End -->
 
