@@ -24,7 +24,7 @@
     <div class="row g-5">
         <!-- Contact Form -->
         <div class="col-lg-6">
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('contact.store') }}">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Your Name</label>
@@ -44,6 +44,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary px-4 py-2">Send Message</button>
             </form>
+            <span class="text-success"></span>
         </div>
 
         <!-- Contact Info -->

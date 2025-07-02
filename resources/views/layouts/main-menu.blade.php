@@ -98,6 +98,12 @@
             <span> Departments </span>
         </a>
     </li>
+    <li>
+        <a href="{{ route('contact.leadsContact') }}">
+        <i data-feather="users"></i>
+            <span> Contacts </span>
+        </a>
+    </li>
 
 
     <!-- Settings -->

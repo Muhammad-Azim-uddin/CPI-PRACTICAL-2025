@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\backend\AboutController;
+use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DepartmentController;
 use App\Http\Controllers\backend\TeacherController;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,9 @@ Route::get('/contact', [FrontendHomeController::class, 'contact'])->name('contac
 
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-
+Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
+Route::delete('/contact/destroy/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+Route::get('/leads-contact', [ContactController::class, 'leadsContact'])->name('contact.leadsContact');
 
 Route::prefix('/dashboard')->middleware(['auth', 'verified'])->name('backend.')->group(function(){
    //*Department Routes
